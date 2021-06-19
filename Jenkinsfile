@@ -5,7 +5,7 @@ pipeline {
         stage('Perform Packer Build') {
             when {
                     expression {
-                        params.PACKER_ACTION == 'YES'
+                        params.PACKER_ACTION == 'DEPLOY'
                     }
                 }
             steps {
@@ -24,7 +24,7 @@ pipeline {
         stage('No Packer Build') {
             when {
                     expression {
-                        params.PACKER_ACTION == 'NO'
+                        params.PACKER_ACTION == 'DEPLOY'
                     }
                 }
             steps {
