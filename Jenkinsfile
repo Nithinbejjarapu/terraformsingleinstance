@@ -11,7 +11,7 @@ pipeline {
             steps {
                     sh 'pwd'
                     sh 'ls -al'
-                    sh "echo variable \\\"imagename\\\" { default = \\\"ami-0a8f605a267d739c3\\\" } >> variables.tf"*/
+                    sh "echo variable \\\"imagename\\\" { default = \\\"ami-0a8f605a267d739c3\\\" } >> variables.tf"
                     sh 'packer build -var-file packer-vars.json packer.json | tee output.txt'
                     sh "tail -2 output.txt | head -2 | awk 'match(\$0, /ami-.*/) { print substr(\$0, RSTART, RLENGTH) }' > ami.txt"
                     sh "echo \$(cat ami.txt) > ami.txt"
